@@ -5,19 +5,19 @@ qrImg = caixa.querySelector(".qr-code img");
 let preValue;
 
 generateBtn.addEventListener("click", () => {
-    let qrValue = qrInput.value.trim();
-    if(!qrValue || preValue === qrValue) return;
+    let qrValue = qrInput.value;
+    if(!qrValue) return;
     preValue = qrValue;
     generateBtn.innerText = "Gerando QR Code...";
     qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
     qrImg.addEventListener("load", () => {
         caixa.classList.add("active");
-        generateBtn.innerText = "Gerando QR Code";
+        generateBtn.innerText = "Gerar QR Code";
     });
 });
 
 qrInput.addEventListener("keyup", () => {
-    if(!qrInput.value.trim()) {
+    if(!qrInput.value) {
         caixa.classList.remove("active");
         
     }
